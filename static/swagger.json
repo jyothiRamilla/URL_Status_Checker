@@ -1,0 +1,79 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "description": "crediwatch",
+      "version": "1.0.0",
+      "title": "Crediwatch-Python-Flask-Rest-Boilerplate-Assignment",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "servers": [
+      {
+        "url": "/"
+      }
+    ],
+    "tags": [
+      {
+        "name": "URL Link checker",
+        "description": "Example API for checking whether the hyperlinks of the url are dead or alive"
+      }
+    ],
+    "paths": {
+      "parameters": [
+        {
+          "name": "url",
+          "in": "path",
+          "required": true,
+          "description": "URL of a website",
+          "type": "string",
+          "default":"www.flipkart.com"
+        }
+      ],
+      "/request/{url}": {
+        "get": {
+          "tags": [
+            "URL Requester"
+          ],
+          "summary": "Get the status of request with given url",
+          "parameters": [
+            {
+              "name": "url",
+              "in": "path",
+              "required": true,
+              "description": "Url of the website",
+              "default":"www.flipkart.com",
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "type": "array",
+                "$ref": "#/components/schemas/url"
+              }      },
+          "400": {
+            "description": "Failed. Misunderstood Request."
+          },
+          "404": {
+            "description": "Failed. Request not found."
+          }
+        }
+        }
+      }
+    },
+    "components": {
+    "schemas": {
+      "url": {
+        "properties": {
+          "uuid": {
+            "type": "string"
+          }
+        }
+      }
+    }
+}
+}
+
