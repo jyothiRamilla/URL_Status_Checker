@@ -8,4 +8,6 @@ flask-caching
 requests
 webdriver-manager
 pymongo
+pymongo[srv]
+dnspython
 
