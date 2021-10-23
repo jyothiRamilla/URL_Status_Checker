@@ -1,4 +1,3 @@
-"""The Endpoints to manage the BOOK_REQUESTS"""
 import sys
 sys.path.append("../")
 import uuid
