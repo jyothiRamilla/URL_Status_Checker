@@ -8,6 +8,7 @@ from db import connect_mongo
 def depth_scraping(url_link,depth,driver,urllink_collection={}):
     try:
         driver.get(url_link)
+        #for <a> tag use  driver.find_elements_by_css_selector("a")
         links = driver.find_elements_by_css_selector("link")
         urllink_collection[1]=links
     except Exception:
