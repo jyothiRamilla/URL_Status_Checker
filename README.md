@@ -21,3 +21,5 @@ Write a program that visits a particular url. It then finds all the hyperlinks o
 ## The application is deployed in heroku: 
 
 [Linkforthedeployedapplication](https://crediwatch-flask-urlchecker.herokuapp.com/swagger/)
+
+https://crediwatch-flask-urlchecker.herokuapp.com/swagger/
