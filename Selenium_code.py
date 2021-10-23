@@ -42,6 +42,7 @@ def Url_link_checker(url_link,depth=1,url_dict={}):
     #options = webdriver.ChromeOptions() 
     #options.add_argument("start-maximized")
     #options.add_argument('disable-infobars')
+    """
     chrome_options = webdriver.ChromeOptions()
     chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_PATH")
     chrome_options.add_argument("--headless")
@@ -51,6 +52,17 @@ def Url_link_checker(url_link,depth=1,url_dict={}):
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
     print(driver)
     #driver = webdriver.Chrome(ChromeDriverManager().install())
+    """
+    CHROMEDRIVER_PATH = "/app/.chromedriver/bin/chromedriver"
+    chrome_bin = os.environ.get('GOOGLE_CHROME_BIN', "chromedriver")
+    options = webdriver.ChromeOptions()
+    options.binary_location = chrome_bin
+    options.add_argument("--disable-gpu")
+    options.add_argument("--no-sandbox")
+    options.add_argument('headless')
+    options.add_argument('window-size=1200x600')
+    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
+
     driver.get(url_link)
     links = driver.find_elements_by_css_selector("link")
     print("Links are")
