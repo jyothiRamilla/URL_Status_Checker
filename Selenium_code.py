@@ -1,11 +1,20 @@
 
 import requests
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
+#from webdriver_manager.chrome import ChromeDriverManager
 from db import connect_mongo
 
+def __init__():
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_PATH")
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--no-sandbox")
+    
 def get_driver_link(url_link):
-    driver = webdriver.Chrome(ChromeDriverManager().install())
+
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+    #driver = webdriver.Chrome(ChromeDriverManager().install())
     driver.get(url_link)
     return driver
 
