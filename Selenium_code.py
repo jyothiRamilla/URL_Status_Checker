@@ -3,13 +3,7 @@ import requests
 from selenium import webdriver
 #from webdriver_manager.chrome import ChromeDriverManager
 from db import connect_mongo
-
-def __init__():
-    chrome_options = webdriver.ChromeOptions()
-    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_PATH")
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--no-sandbox")
+ 
     
 def get_driver_link(url_link):
 
@@ -45,10 +39,15 @@ def depth_scraping(url_link,depth,urllink_collection={}):
 def Url_link_checker(url_link,depth=1,url_dict={}):
     # Access collection of the database     
     collection= connect_mongo.connect_db()
-    options = webdriver.ChromeOptions() 
-    options.add_argument("start-maximized")
-    options.add_argument('disable-infobars')
-    links = depth_scraping(url_link,depth)
+    #options = webdriver.ChromeOptions() 
+    #options.add_argument("start-maximized")
+    #options.add_argument('disable-infobars')
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_PATH")
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--no-sandbox")
+    links = depth_scraping(url_link=url_link,depth=depth)
     print("Links are")
     print(links)
     for key,value in links.items():
