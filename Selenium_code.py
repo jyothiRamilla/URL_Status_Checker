@@ -40,6 +40,8 @@ def Url_link_checker(url_link,depth=1,url_dict={}):
     options.add_argument("start-maximized")
     options.add_argument('disable-infobars')
     links = depth_scraping(url_link,depth)
+    print("Links are")
+    print(links)
     for key,value in links.items():
         for link in value:
             if(link!=None):
