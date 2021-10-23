@@ -5,18 +5,11 @@ from selenium import webdriver
 from db import connect_mongo
  
     
-def get_driver_link(url_link):
-
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
-    #driver = webdriver.Chrome(ChromeDriverManager().install())
-    driver.get(url_link)
-    return driver
-
     
-def depth_scraping(url_link,depth,urllink_collection={}):
-    #if(depth==1):
+def depth_scraping(url_link,depth,driver,urllink_collection={}):
+    #if(depth==1):    
     try:
-        driver = get_driver_link(url_link)
+        driver.get(url_link)
         links = driver.find_elements_by_css_selector("link")
         urllink_collection[1]=links
     except Exception:
@@ -25,7 +18,8 @@ def depth_scraping(url_link,depth,urllink_collection={}):
         for val in range(1,depth):
             for link in urllink_collection[val]:
                 try:
-                    driver = get_driver_link(link)
+                    #driver = get_driver_link(link)
+                    driver.get(url_link)
                     urllink_collection[val+1].append(driver.find_elements_by_css_selector("link"))
                 except Exception:
                     pass
@@ -62,11 +56,12 @@ def Url_link_checker(url_link,depth=1,url_dict={}):
     options.add_argument('headless')
     options.add_argument('window-size=1200x600')
     driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=options)
-
-    driver.get(url_link)
-    links = driver.find_elements_by_css_selector("link")
+    links = depth_scraping(url_link,depth,driver,urllink_collection={})
+    #links = driver.find_elements_by_css_selector("link")
     print("Links are")
     print(links)
+    
+    """
     for link in links: 
         if(link!=None):
             try:                    
@@ -95,5 +90,4 @@ def Url_link_checker(url_link,depth=1,url_dict={}):
                     pass            
 
     return url_dict
-    """
 
