@@ -1,3 +1,9 @@
+## Mongodb -connection:
+    
+#    mongodb+srv://Crediwatch_Db:Crediwatch_2021@cluster0.cxzmc.mongodb.net/test
+#    Password: Crediwatch_2021
+
+
 from pymongo import MongoClient  
 
 def connect_db():
