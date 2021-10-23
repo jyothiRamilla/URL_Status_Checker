@@ -17,7 +17,7 @@ def depth_scraping(url_link,depth,driver,urllink_collection={}):
         for val in range(1,depth):
             for link in urllink_collection[val]:
                 try:
-                    driver.get(url_link)
+                    driver.get(link)
                     urllink_collection[val+1].append(driver.find_elements_by_css_selector("link"))
                 except Exception:
                     pass
