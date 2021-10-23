@@ -16,7 +16,7 @@ Write a program that visits a particular url. It then finds all the hyperlinks o
 ## Code Modules:
     db folder - mongodb configuration(used mongodb srv url cluster)
     routes - requests/responses for the application
-    static - swagger.json file for documentation of the requests/responses
+    static - swagger.json file for documentation of the requests/responses for OAS3 Specification
     Selenium_code.py - Logic for checking the status of the url
 ## The application is deployed in heroku: 
 
