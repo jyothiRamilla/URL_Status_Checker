@@ -67,6 +67,20 @@ def Url_link_checker(url_link,depth=1,url_dict={}):
     links = driver.find_elements_by_css_selector("link")
     print("Links are")
     print(links)
+    for link in value:
+            if(link!=None):
+                try:                    
+                    r = requests.head(link.get_attribute('href'))
+                    ##Insert each record at a time to the database
+                    collection.insert_one({"Domain_Name":url_link,"URL":link.get_attribute('href'),"status_code":r.status_code,"Response_time":r.elapsed.total_seconds()})
+
+                    url_dict[link.get_attribute('href')] = [{"Domain_Name":url_link,"URL":link.get_attribute('href'),"status_code":r.status_code,"Response_time":r.elapsed.total_seconds()}]
+    
+                except Exception:
+                    pass            
+
+    return url_dict
+    """
     for key,value in links.items():
         for link in value:
             if(link!=None):
@@ -81,4 +95,5 @@ def Url_link_checker(url_link,depth=1,url_dict={}):
                     pass            
 
     return url_dict
+    """
 
