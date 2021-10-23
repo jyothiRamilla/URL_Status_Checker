@@ -8,7 +8,9 @@ from flask_swagger_ui import get_swaggerui_blueprint
 from routes import request_api
 from flask_caching import Cache
 
+
 cache = Cache(config={'CACHE_TYPE': 'SimpleCache'})
+
 
 APP = Flask(__name__)
 cache.init_app(APP)
@@ -61,7 +63,7 @@ if __name__ == '__main__':
                         help="Use flask debug/dev mode with file change reloading")
     ARGS = PARSER.parse_args()
 
-    PORT = int(os.environ.get('PORT', 5000))
+    PORT = int(os.environ.get('PORT', 4000))
 
     if ARGS.debug:
         print("Running in debug mode")

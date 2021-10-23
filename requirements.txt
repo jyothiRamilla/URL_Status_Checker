@@ -1,2 +1,10 @@
 flask
-flask_cors
+gunicorn
+flask-cors
+selenium
+flask-swagger-ui
+flask-caching
+requests
+webdriver-manager
+pymongo
+

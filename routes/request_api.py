@@ -1,4 +1,7 @@
 """The Endpoints to manage the BOOK_REQUESTS"""
+import sys
+sys.path.append("../")
+import uuid
 from datetime import datetime, timedelta
 from flask import jsonify, abort, request, Blueprint
 from Selenium_code import Url_link_checker
@@ -16,7 +19,7 @@ def get_blueprint():
     return REQUEST_API
 
 #{url}?url=https%3A%2F%2Fwww.flipkart.com%2F
-def docache(minutes=1, content_type='application/json; charset=utf-8'):
+def docache(minutes=3, content_type='application/json; charset=utf-8'):
     """ Flask decorator that allow to set Expire and Cache headers. """
     def fwrap(f):
         @wraps(f)
@@ -31,7 +34,7 @@ def docache(minutes=1, content_type='application/json; charset=utf-8'):
     return fwrap
 
 @REQUEST_API.route('/request/<string:_url>', methods=['GET'])
-@docache(minutes=1, content_type='application/json')
+@docache(minutes=3, content_type='application/json')
 def get_record_by_id(_url):
     """Get book request details by it's id
     @param _url: the url
@@ -40,5 +43,6 @@ def get_record_by_id(_url):
     """
     print("**********************")
     url = "https://"+_url+"/"
-    collect_dict = Url_link_checker(str(url))
+    print(url)
+    collect_dict = Url_link_checker(url_link=str(url))
     return json.dumps(collect_dict)
