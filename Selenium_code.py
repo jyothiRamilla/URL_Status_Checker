@@ -47,7 +47,12 @@ def Url_link_checker(url_link,depth=1,url_dict={}):
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
-    links = depth_scraping(url_link=url_link,depth=depth)
+    #links = depth_scraping(url_link=url_link,depth=depth)
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+    print(driver)
+    #driver = webdriver.Chrome(ChromeDriverManager().install())
+    driver.get(url_link)
+    links = driver.find_elements_by_css_selector("link")
     print("Links are")
     print(links)
     for key,value in links.items():
