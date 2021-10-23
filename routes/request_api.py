@@ -17,7 +17,6 @@ def get_blueprint():
     """Return the blueprint for the main app module"""
     return REQUEST_API
 
-#{url}?url=https%3A%2F%2Fwww.flipkart.com%2F
 def docache(minutes=3, content_type='application/json; charset=utf-8'):
     """ Flask decorator that allow to set Expire and Cache headers. """
     def fwrap(f):
