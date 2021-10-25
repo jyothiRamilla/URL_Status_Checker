@@ -2,13 +2,6 @@
 <h1> 
 <p align="center" >Python-flask-mongo-selenium-swagger for checking the status of a url and its hyperlinks</h1>
 
-## Problem Statement:
-Write a program that visits a particular url. It then finds all the hyperlinks on that page, visits them and checks whether those hyperlinks are alive or dead.Also Capture the below fields  in any database.
-    Schema - (Sr No., Domain Name,Url,Status Code,Response Time)
-    Note:- Give configuration variable as depth.
-    Host this in a cloud platform with some frontend.
-    Example Url:- https://www.flipkart.com/
-
 ## Tech Stack:
     Python-Flask,Selenium,webdriver,pymongo
     Database- Mongodb
