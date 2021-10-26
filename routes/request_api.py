@@ -34,13 +34,13 @@ def docache(minutes=3, content_type='application/json; charset=utf-8'):
 @REQUEST_API.route('/request/<string:_url>', methods=['GET'])
 @docache(minutes=3, content_type='application/json')
 def get_record_by_id(_url):
-    """Get book request details by it's id
+    """
     @param _url: the url
     @return: 200:  a flask/response object \
     with application/json mimetype.
     """
-    print("**********************")
+    #print("**********************")
     url = "https://"+_url+"/"
-    print(url)
+    #print(url)
     collect_dict = Url_link_checker(url_link=str(url))
     return json.dumps(collect_dict)
