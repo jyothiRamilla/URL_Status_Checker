@@ -14,8 +14,4 @@
     static - swagger.json file for documentation of the requests/responses for OAS3 Specification
     Selenium_code.py - Logic for checking the status of the url
         
-## The application is deployed in heroku: 
 
-[Linkforthedeployedapplication](https://crediwatch-flask-urlchecker.herokuapp.com/swagger/)
-
-https://crediwatch-flask-urlchecker.herokuapp.com/swagger/
